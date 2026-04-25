@@ -1,0 +1,14 @@
+{
+    "configurations": [
+        {
+            "name": "Linux",
+            "includePath": [
+                "${workspaceFolder}/src",
+                "${workspaceFolder}/src/include",
+                "${workspaceFolder}/build/_deps/raylib-src/src"
+            ],
+            "cppStandard": "c++17"
+        }
+    ],
+    "version": 4
+}
