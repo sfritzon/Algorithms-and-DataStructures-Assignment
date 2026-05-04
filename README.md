@@ -52,7 +52,7 @@ Step-by-step visualization of three sorting algorithms with live comparison and 
 
 **Bar colours:**
 
-| Colour | Meaning                        |
+| Colour | Purpose                     |
 |--------|--------------------------------|
 | Gray   | Default – untouched            |
 | Yellow | Comparing – two bars examined  |
@@ -71,7 +71,7 @@ A 25×25 maze is procedurally generated using **recursive backtracking**, guaran
 
 **Cell colours:**
 
-| Colour | Meaning              |
+| Colour | Purpose              |
 |--------|----------------------|
 | Dark   | Wall                 |
 | Gray   | Open – unvisited     |
