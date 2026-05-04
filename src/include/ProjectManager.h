@@ -36,7 +36,7 @@ class ProjectManager
             {
                 StateMachine next = menu.HandleInput();
                 if (next != StateMachine::Menu)
-		    state = next;
+                    state = next;
 
                 break;
             }
@@ -72,11 +72,11 @@ class ProjectManager
         switch (state) 
         {
             case StateMachine::Menu: 
-		break;
+                break;
 
             case StateMachine::Sorting: 
-		for (int s = 0; s < sortingManager.GetStepsPerFrame(); s++)
-		    sortingManager.Update();
+                for (int s = 0; s < sortingManager.GetStepsPerFrame(); s++)
+                    sortingManager.Update();
                 break;
 
             case StateMachine::Maze:

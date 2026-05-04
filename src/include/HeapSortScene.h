@@ -113,7 +113,7 @@ class HeapSortScene : public SortScene
             comparisons++;
 
             if (bars.Get(level) > bars.Get(largest))
-		largest = level;
+                largest = level;
         }
 
         if (retur < siftSize)
@@ -122,7 +122,7 @@ class HeapSortScene : public SortScene
             comparisons++;
 
             if (bars.Get(retur) > bars.Get(largest))
-		largest = retur;
+                largest = retur;
         }
 
         if (largest != siftCurrent)

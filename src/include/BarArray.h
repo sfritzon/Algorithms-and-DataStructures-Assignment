@@ -52,13 +52,13 @@ class BarArray
 
     int Size() const
     {
-	return (int)values.size();
+        return (int)values.size();
     }
 
 
     int Get(int i) const
     {
-	return values[i];
+        return values[i];
     }
 
 

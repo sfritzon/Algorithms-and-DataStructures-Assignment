@@ -13,8 +13,8 @@ class AStarPath : public PathScene
 
     void OnReset() override 
     {
-	while (!frontier.empty())
-	    frontier.pop();
+        while (!frontier.empty())
+            frontier.pop();
 
         parent.assign(MazeGrid::ROWS, std::vector<std::pair<int,int>>(MazeGrid::COLS, {-1,-1}));
         gCost.assign(MazeGrid::ROWS, std::vector<int>(MazeGrid::COLS, INT_MAX));
@@ -34,8 +34,8 @@ class AStarPath : public PathScene
     {
         if (solved || failed || frontier.empty()) 
         {
-	    if (frontier.empty() && !solved)
-		failed = true;
+            if (frontier.empty() && !solved)
+                failed = true;
 
             return;
         }
@@ -45,7 +45,7 @@ class AStarPath : public PathScene
         steps++;
 
         if (g > gCost[r][c])
-	    return;
+            return;
 
         if (std::make_pair(r,c) == maze.EndCell()) 
         {
@@ -62,11 +62,11 @@ class AStarPath : public PathScene
         {
             int nr = r+dr, nc = c+dc;
             if (!maze.InBounds(nr, nc) || maze.IsWall(nr, nc))
-		continue;
+                continue;
 
             auto s = maze.Get(nr, nc);
             if (s == CellState::Visited)
-		continue;
+                continue;
 
             int ng = g + 1;
             if (ng < gCost[nr][nc]) 

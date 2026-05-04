@@ -28,7 +28,7 @@ class InsertionSortScene : public SortScene
         {
             bars.ResetStates();
             for (int k = 0; k < i; k++)
-		bars.SetState(k, BarState::Sorted);
+                bars.SetState(k, BarState::Sorted);
 
             if (i >= n)
             {

@@ -11,8 +11,8 @@ public:
 
     void OnReset() override 
     {
-	while (!frontier.empty())
-	    frontier.pop();
+        while (!frontier.empty())
+            frontier.pop();
 
         parent.assign(MazeGrid::ROWS, std::vector<std::pair<int,int>>(MazeGrid::COLS, { -1,-1 }));
 
@@ -27,8 +27,8 @@ public:
     {
         if (solved || failed || frontier.empty()) 
         {
-	    if (frontier.empty() && !solved)
-		failed = true;
+            if (frontier.empty() && !solved)
+                failed = true;
 
             return;
         }

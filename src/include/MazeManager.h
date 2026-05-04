@@ -25,8 +25,8 @@ class MazeManager
 
     void Update(float dt) 
     {
-	if (scenes.empty())
-	    return;
+        if (scenes.empty())
+            return;
         PathScene* cur = scenes[currentIndex];
 
         if (!cur->IsSolved() && !cur->IsFailed()) 
@@ -47,8 +47,8 @@ class MazeManager
 
     void Draw(int screenW, int screenH) 
     {
-	if (scenes.empty())
-	    return;
+        if (scenes.empty())
+            return;
 
         const int HUD_H = 60;
         const int MARGIN = 20;
@@ -68,8 +68,8 @@ class MazeManager
 
     void NextScene() 
     {
-	if (scenes.empty())
-	    return;
+        if (scenes.empty())
+            return;
 
         currentIndex = (currentIndex + 1) % (int)scenes.size();
         scenes[currentIndex]->Reset();
@@ -79,8 +79,8 @@ class MazeManager
 
     void ResetCurrent() 
     {
-	if (!scenes.empty())
-	    scenes[currentIndex]->Reset();
+        if (!scenes.empty())
+            scenes[currentIndex]->Reset();
 
         mouse.Reset();
     }
@@ -115,7 +115,7 @@ private:
         DrawLine(0, 52, screenW, 52, { 60, 60, 80, 180 });
 
         if (scenes.empty())
-	    return;
+            return;
 
         PathScene* cur = scenes[currentIndex];
 

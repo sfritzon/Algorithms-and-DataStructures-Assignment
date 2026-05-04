@@ -63,7 +63,7 @@ class MazeGrid
                     int nr = cr + dr, nc = cc + dc;
 
                     if (nr > 0 && nr < ROWS - 1 && nc > 0 && nc < COLS - 1 && cells[nr][nc] == CellState::Wall)
-			neighbors.push_back({nr, nc});
+                        neighbors.push_back({nr, nc});
                 }
 
                 if (neighbors.empty())

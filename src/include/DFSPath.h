@@ -11,8 +11,8 @@ public:
 
     void OnReset() override 
     {
-	while (!frontier.empty())
-	    frontier.pop();
+        while (!frontier.empty())
+            frontier.pop();
 
         parent.assign(MazeGrid::ROWS, std::vector<std::pair<int,int>>(MazeGrid::COLS, {-1,-1}));
 
@@ -37,7 +37,7 @@ public:
         steps++;
 
         if (maze.Get(r, c) == CellState::Visited)
-	    return;
+            return;
 
         if (std::make_pair(r,c) == maze.EndCell()) 
         {

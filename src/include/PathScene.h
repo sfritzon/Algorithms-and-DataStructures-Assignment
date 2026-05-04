@@ -73,8 +73,8 @@ class PathScene
 
     void DrawStats(int x, int y) const 
     {
-	if (!solved && !failed)
-	    return;
+        if (!solved && !failed)
+            return;
 
         DrawRectangle(x, y, 310, 70, { 10, 10, 18, 200 });
         DrawRectangleLines(x, y, 310, 70, { 80, 80, 100, 200 });
