@@ -48,7 +48,8 @@ class SortScene
 
     void DrawStats(int x, int y) const
     {
-        if (!sorted) return;
+	if (!sorted)
+	    return;
 
         DrawRectangle(x, y, 300, 90, { 10, 10, 18, 200 });
         DrawRectangleLines(x, y, 200, 90, { 80, 80, 100, 200 });

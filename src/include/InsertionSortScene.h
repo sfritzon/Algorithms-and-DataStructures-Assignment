@@ -27,11 +27,12 @@ class InsertionSortScene : public SortScene
         if (phase == PICK)
         {
             bars.ResetStates();
-            for (int k = 0; k < i; ++k) bars.SetState(k, BarState::Sorted);
+            for (int k = 0; k < i; k++)
+		bars.SetState(k, BarState::Sorted);
 
             if (i >= n)
             {
-                for (int k = 0; k < n; ++k)
+                for (int k = 0; k < n; k++)
                 {
                     bars.SetState(k, BarState::Sorted);
                 }
@@ -43,11 +44,12 @@ class InsertionSortScene : public SortScene
             j = i;
             bars.SetState(j, BarState::Comparing);
             phase = SHIFT;
+
             return;
         }
 
         bars.ResetStates();
-        for (int k = 0; k < i; ++k)
+        for (int k = 0; k < i; k++)
         {
             bars.SetState(k, BarState::Sorted);
         }
@@ -56,21 +58,22 @@ class InsertionSortScene : public SortScene
         {
             bars.SetState(j, BarState::Comparing);
             bars.SetState(j - 1, BarState::Comparing);
-            ++comparisons;
+            comparisons++;
 
             if (bars.Get(j) < bars.Get(j - 1)) 
             {
                 bars.SetState(j, BarState::Swapping);
                 bars.SetState(j - 1, BarState::Swapping);
                 bars.Swap(j, j - 1);
-                ++swaps;
-                --j;
+                swaps++;
+                j--;
+
                 return;
             }
         }
 
         bars.SetState(j, BarState::Sorted);
-        ++i;
+        i++;
         phase = PICK;
     }
 

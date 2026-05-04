@@ -13,12 +13,15 @@ class AStarPath : public PathScene
 
     void OnReset() override 
     {
-        while (!frontier.empty()) frontier.pop(); parent.assign(MazeGrid::ROWS, std::vector<std::pair<int,int>>(MazeGrid::COLS, {-1,-1}));
+	while (!frontier.empty())
+	    frontier.pop();
 
+        parent.assign(MazeGrid::ROWS, std::vector<std::pair<int,int>>(MazeGrid::COLS, {-1,-1}));
         gCost.assign(MazeGrid::ROWS, std::vector<int>(MazeGrid::COLS, INT_MAX));
 
         auto [sr, sc] = maze.StartCell();
         auto [er, ec] = maze.EndCell();
+
         gCost[sr][sc] = 0;
         int h = std::abs(er - sr) + std::abs(ec - sc);
         frontier.push({h, 0, sr, sc});
@@ -31,33 +34,39 @@ class AStarPath : public PathScene
     {
         if (solved || failed || frontier.empty()) 
         {
-            if (frontier.empty() && !solved) failed = true;
+	    if (frontier.empty() && !solved)
+		failed = true;
+
             return;
         }
 
         auto [f, g, r, c] = frontier.top();
         frontier.pop();
-        ++steps;
+        steps++;
 
-        if (g > gCost[r][c]) return;
+        if (g > gCost[r][c])
+	    return;
 
         if (std::make_pair(r,c) == maze.EndCell()) 
         {
             TracePath(parent, {r, c});
             solved = true;
+
             return;
         }
 
         maze.Set(r, c, CellState::Visited);
-
         auto [er, ec] = maze.EndCell();
 
         for (auto [dr, dc] : DIRS) 
         {
             int nr = r+dr, nc = c+dc;
-            if (!maze.InBounds(nr, nc) || maze.IsWall(nr, nc)) continue;
+            if (!maze.InBounds(nr, nc) || maze.IsWall(nr, nc))
+		continue;
+
             auto s = maze.Get(nr, nc);
-            if (s == CellState::Visited) continue;
+            if (s == CellState::Visited)
+		continue;
 
             int ng = g + 1;
             if (ng < gCost[nr][nc]) 

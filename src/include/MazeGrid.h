@@ -38,8 +38,8 @@ class MazeGrid
 
     void Generate()
     {
-        for (int r = 0; r < ROWS; ++r)
-            for (int c = 0; c < COLS; ++c)
+        for (int r = 0; r < ROWS; r++)
+            for (int c = 0; c < COLS; c++)
             {
                 cells[r][c] = CellState::Wall;
             }
@@ -61,7 +61,9 @@ class MazeGrid
                 for (auto [dr, dc] : std::initializer_list<std::pair<int, int>> { {-2,0},{2,0},{0,-2},{0,2} })
                 {
                     int nr = cr + dr, nc = cc + dc;
-                    if (nr > 0 && nr < ROWS - 1 && nc > 0 && nc < COLS - 1 && cells[nr][nc] == CellState::Wall) neighbors.push_back({nr, nc});
+
+                    if (nr > 0 && nr < ROWS - 1 && nc > 0 && nc < COLS - 1 && cells[nr][nc] == CellState::Wall)
+			neighbors.push_back({nr, nc});
                 }
 
                 if (neighbors.empty())
@@ -88,8 +90,8 @@ class MazeGrid
 
     void ResetStates()
     {
-        for (int r = 0; r < ROWS; ++r)
-            for (int c = 0; c < COLS; ++c)
+        for (int r = 0; r < ROWS; r++)
+            for (int c = 0; c < COLS; c++)
                 if (cells[r][c] != CellState::Wall)
                     cells[r][c] = CellState::Open;
     }
@@ -136,9 +138,9 @@ class MazeGrid
         float cw = (float)w / COLS;
         float ch = (float)h / ROWS;
 
-        for (int r = 0; r < ROWS; ++r) 
+        for (int r = 0; r < ROWS; r++) 
         {
-            for (int c = 0; c < COLS; ++c) 
+            for (int c = 0; c < COLS; c++) 
             {
                 float bx = x + c * cw;
                 float by = y + r * ch;

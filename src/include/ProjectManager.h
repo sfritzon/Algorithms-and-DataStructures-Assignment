@@ -35,7 +35,9 @@ class ProjectManager
             case StateMachine::Menu: 
             {
                 StateMachine next = menu.HandleInput();
-                if (next != StateMachine::Menu) state = next;
+                if (next != StateMachine::Menu)
+		    state = next;
+
                 break;
             }
 
@@ -46,6 +48,7 @@ class ProjectManager
                 if (IsKeyPressed(KEY_R)) sortingManager.ResetCurrent();
                 if (IsKeyPressed(KEY_UP)) sortingManager.IncreaseSpeed();
                 if (IsKeyPressed(KEY_DOWN)) sortingManager.DecreaseSpeed();
+
                 break;
             }
 
@@ -56,6 +59,7 @@ class ProjectManager
                 if (IsKeyPressed(KEY_R)) mazeManager.ResetCurrent();
                 if (IsKeyPressed(KEY_UP)) mazeManager.IncreaseSpeed();
                 if (IsKeyPressed(KEY_DOWN)) mazeManager.DecreaseSpeed();
+
                 break;
             }
         }
@@ -68,13 +72,12 @@ class ProjectManager
         switch (state) 
         {
             case StateMachine::Menu: 
-            break;
+		break;
 
             case StateMachine::Sorting: 
-            {
-                for (int s = 0; s < sortingManager.GetStepsPerFrame(); ++s) sortingManager.Update();
+		for (int s = 0; s < sortingManager.GetStepsPerFrame(); s++)
+		    sortingManager.Update();
                 break;
-            }
 
             case StateMachine::Maze:
                 mazeManager.Update(dt);

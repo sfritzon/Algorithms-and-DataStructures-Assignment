@@ -11,12 +11,19 @@ public:
 
     StateMachine HandleInput() 
     {
-        if (IsKeyPressed(KEY_UP) || IsKeyPressed(KEY_W)) selectedIndex = (selectedIndex - 1 + (int)items.size()) % (int)items.size();
-        if (IsKeyPressed(KEY_DOWN) || IsKeyPressed(KEY_S)) selectedIndex = (selectedIndex + 1) % (int)items.size();
+	if (IsKeyPressed(KEY_UP) || IsKeyPressed(KEY_W))
+	    selectedIndex = (selectedIndex - 1 + (int)items.size()) % (int)items.size();
+
+        if (IsKeyPressed(KEY_DOWN) || IsKeyPressed(KEY_S))
+	    selectedIndex = (selectedIndex + 1) % (int)items.size();
+
         if (IsKeyPressed(KEY_ENTER) || IsKeyPressed(KEY_SPACE)) 
         {
-            if (selectedIndex == 0) return StateMachine::Sorting;
-                if (selectedIndex == 1) return StateMachine::Maze;
+	    if (selectedIndex == 0)
+		return StateMachine::Sorting;
+
+            if (selectedIndex == 1)
+		return StateMachine::Maze;
         }
 
         return StateMachine::Menu;
@@ -35,7 +42,7 @@ public:
 
         int startY = screenH / 2 - 20;
 
-        for (int i = 0; i < (int)items.size(); ++i) 
+        for (int i = 0; i < (int)items.size(); i++) 
         {
             bool sel = (i == selectedIndex);
 
