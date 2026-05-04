@@ -66,7 +66,6 @@ A 25×25 maze is procedurally generated using **recursive backtracking**, guaran
 |-------------|-----------------|----------------------|
 | BFS         | Queue (FIFO)    | Yes                  |
 | DFS         | Stack (LIFO)    | No                   |
-| Dijkstra    | Priority queue  | Yes                  |
 | A*          | Priority queue + Manhattan heuristic | Yes   |
 
 **Cell colours:**
@@ -120,7 +119,6 @@ Algorithms-and-DataStructures-Assignment/
 │   ├── MazeManager.h       # Manages maze scenes
 │   ├── BFSScene.h
 │   ├── DFSScene.h
-│   ├── DijkstraScene.h
 │   ├── AStarScene.h
 │   └── MouseAnimator.h     # Bonus mouse animation
 ├── CMakeLists.txt
@@ -140,7 +138,7 @@ main.cpp
         ├── SceneManager  (sorting branch)
         │     └── SortScene* × 3
         └── MazeManager   (maze branch)
-              ├── PathScene* × 4
+              ├── PathScene* × 3
               └── MouseAnimator
 ```
 
