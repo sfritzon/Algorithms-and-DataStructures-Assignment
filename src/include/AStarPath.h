@@ -13,7 +13,9 @@ class AStarPath : public PathScene
 
     void OnReset() override 
     {
-        while (!frontier.empty()) frontier.pop(); parent.assign(MazeGrid::ROWS, std::vector<std::pair<int,int>>(MazeGrid::COLS, {-1,-1}));
+        while (!frontier.empty()) 
+            frontier.pop(); parent.assign(MazeGrid::ROWS, 
+                std::vector<std::pair<int,int>>(MazeGrid::COLS, {-1,-1}));
 
         gCost.assign(MazeGrid::ROWS, std::vector<int>(MazeGrid::COLS, INT_MAX));
 
