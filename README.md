@@ -5,7 +5,37 @@ It visualizes sorting algorithms and pathfinding algorithms. You can navigate th
 
 ---
 
-## Features
+## Table of Contents
+
+1. [Project Overview and Requirements](#1-project-overview-and-requirements)
+2. [Features](#2-features)
+3. [Controls](#3-controls)
+4. [Project Structure](#4-project-structure)
+5. [Architecture](#5-architecture)
+6. [Building](#6-building)
+7. [Dependencies](#7-dependencies)
+
+
+## 1. Project Overview and Requirements
+The assignment is to create a sorting visualizer that shows the progress of different sorting algorithms and a maze visualizer for pathfinding algorithms built with Raylib and C++.
+
+For G:
+
+    Create a sorting visualizer project
+    Have at least 3 of the sorting algorithms available to visualize from the course material information (heap sort, bubble sort etc)
+    Be able to swap between the scenes with a button press
+    Bonus: Add information about comparisons and swaps made for the algorithm when it's completed
+
+For VG:
+
+    All of G and..
+    Create a maze visualizer project that shows a pathfinding algorithm working its way through the start to the end of the maze
+    Maze has to at least have a size of 25 x 25, and contain walls that block a portion of the path
+    The maze needs to be solvable, no viable path = fail
+    You have to implement at least 2 pathfinding algorithms from the course documentation ( BFS / DFS / Dijkstras / A* )
+    Bonus: At the end when a path if found, simulate a mouse walking the path towards the end goal and finding its cheese!
+
+## 2. Features
 
 ### Start Menu
 - Arrow key navigation to select a visualizer
@@ -55,7 +85,7 @@ A 25×25 maze is procedurally generated using **recursive backtracking**, guaran
 
 ---
 
-## Controls
+## 3. Controls
 
 | Key        | Action                                      |
 |------------|---------------------------------------------|
@@ -66,7 +96,7 @@ A 25×25 maze is procedurally generated using **recursive backtracking**, guaran
 
 ---
 
-## Project Structure
+## 4. Project Structure
 
 ```
 Algorithms-and-DataStructures-Assignment/
@@ -99,7 +129,7 @@ Algorithms-and-DataStructures-Assignment/
 
 ---
 
-## Architecture
+## 5. Architecture
 
 The project uses a layered state machine design:
 
@@ -118,10 +148,10 @@ Each algorithm advances **one step per frame** so the visualization is always sm
 
 ---
 
-## Building
+## 6. Building
 
 - CMake
-- C++17 compiler
+- C++ compiler
 - Git
 - Raylib 5
 
@@ -133,11 +163,19 @@ cmake --build build -j$(nproc)
 ./build/Algorithms-and-DataStructures-Assignment
 ```
 
+### Windows
+
+```cmd
+cmake -B build
+cmake --build build --config Release
+.\build\Release\Algorithms-and-DataStructures-Assignment.exe
+```
+
 Raylib is automatically downloaded and compiled on first build if not found system-wide locally.
 
 ---
 
-## Dependencies
+## 7. Dependencies
 
 - [Raylib 5](https://github.com/raysan5/raylib) — graphics, input, window management
 - C++ STL — `std::queue`, `std::stack`, `std::priority_queue`, `std::mt19937`
