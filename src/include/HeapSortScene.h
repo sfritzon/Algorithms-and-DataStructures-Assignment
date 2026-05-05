@@ -27,7 +27,6 @@ class HeapSortScene : public SortScene
         if (sorted) return;
 
         int n = bars.Size();
-        //bars.ResetStates();
 
         for (int k = heapSize; k < n; k++) 
         {
@@ -65,13 +64,11 @@ class HeapSortScene : public SortScene
 
             if (extracting) 
             {
-                //bars.ResetStates();
                 bars.SetState(0, BarState::Swapping);
                 bars.SetState(heapSize - 1, BarState::Swapping);
                 bars.Swap(0, heapSize - 1);
                 swaps++;
                 heapSize--;
-                //bars.SetState(heapSize - 1, BarState::Sorted);
                 siftCurrent = 0;
                 siftSize = heapSize;
                 extracting = false;
