@@ -66,7 +66,7 @@ A 25×25 maze is procedurally generated using **recursive backtracking**, guaran
 |-------------|-----------------|----------------------|
 | BFS         | Queue (FIFO)    | Yes                  |
 | DFS         | Stack (LIFO)    | No                   |
-| A*          | Priority queue + Manhattan heuristic | Yes   |
+| A*          | Priority queue + Manhattan heuristic | IF the heuristic is admissable   |
 
 **Cell colours:**
 
