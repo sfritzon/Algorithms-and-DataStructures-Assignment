@@ -1,6 +1,5 @@
 #pragma once
 #include "SortScene.h"
-#include <iostream>
 
 
 class BubbleSortScene : public SortScene
@@ -11,7 +10,6 @@ class BubbleSortScene : public SortScene
 
     void Reset() override
     {
-        std::cout << "RESET" << std::endl;
         SortScene::Reset();
         lastSwapped = bars.Size() - 1;
     }

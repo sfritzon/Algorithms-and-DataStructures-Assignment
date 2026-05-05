@@ -1,6 +1,5 @@
 #pragma once
 #include "SortScene.h"
-#include <iostream>
 
 
 class HeapSortScene : public SortScene
@@ -27,6 +26,7 @@ class HeapSortScene : public SortScene
         if (sorted) return;
 
         int n = bars.Size();
+        bars.ResetStates();
 
         for (int k = heapSize; k < n; k++) 
         {
@@ -106,7 +106,6 @@ class HeapSortScene : public SortScene
         int level = 2 * siftCurrent + 1;
         int retur = 2 * siftCurrent + 2;
 
-        bars.ResetStates();
         bars.SetState(siftCurrent, BarState::Comparing);
 
         if (level < siftSize)
@@ -133,8 +132,6 @@ class HeapSortScene : public SortScene
             bars.SetState(largest, BarState::Swapping);
             bars.Swap(siftCurrent, largest);
             swaps++;
-            bars.SetState(siftCurrent, BarState::Default);
-            bars.SetState(largest, BarState::Default);
             siftCurrent = largest;
 
             return true;
