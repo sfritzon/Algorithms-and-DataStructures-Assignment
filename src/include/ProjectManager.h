@@ -68,7 +68,7 @@ class ProjectManager
 
     void Update() 
     {
-        float dt = GetFrameTime();
+        float deltaTime = GetFrameTime();
         switch (state) 
         {
             case StateMachine::Menu: 
@@ -81,8 +81,10 @@ class ProjectManager
                 break;
 
             case StateMachine::Maze:
-                mazeManager.Update(dt);
+                mazeManager.Update(deltaTime
+    );
                 break;
+            }
         }
     }
 

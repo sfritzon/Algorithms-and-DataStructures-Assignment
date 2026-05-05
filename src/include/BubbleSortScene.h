@@ -12,6 +12,7 @@ class BubbleSortScene : public SortScene
     {
         SortScene::Reset();
         lastSwapped = bars.Size() - 1;
+        bars.SetState(0, BarState::Sorted);    
     }
 
 
@@ -30,7 +31,7 @@ class BubbleSortScene : public SortScene
             bars.SetState(k, BarState::Sorted);
         }
 
-        if (i >= n -1)
+        if (i >= n - 1)
         {
             for (int k = 0; k < n; k++)
             {
@@ -53,12 +54,13 @@ class BubbleSortScene : public SortScene
             swaps++;
             lastSwapped = j;
         }
-
+        
         j++;
-        if (j >= lastSwapped)
+        
+        if (j >= n)
         {
-            j = 0;
             i++;
+            j = 0;
         }
     }
 

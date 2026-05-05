@@ -1,5 +1,6 @@
 #pragma once
 #include "SortScene.h"
+#include <iostream>
 
 
 class HeapSortScene : public SortScene
@@ -13,10 +14,11 @@ class HeapSortScene : public SortScene
         SortScene::Reset();
         phase = BUILD_HEAP;
         int n = bars.Size();
-        siftRoot = n / 2 - 1;
+        siftRoot = (n - 1) / 2;
         heapSize = n;
         siftCurrent = siftRoot;
         siftSize = n;
+        extracting = false;
     }
 
 
@@ -25,7 +27,7 @@ class HeapSortScene : public SortScene
         if (sorted) return;
 
         int n = bars.Size();
-        bars.ResetStates();
+        //bars.ResetStates();
 
         for (int k = heapSize; k < n; k++) 
         {
@@ -40,6 +42,7 @@ class HeapSortScene : public SortScene
                 if (siftRoot < 0) 
                 {
                     phase = EXTRACT;
+                    extracting = true;
                     siftCurrent = 0;
                     siftSize = heapSize;
                 } 
@@ -60,24 +63,25 @@ class HeapSortScene : public SortScene
                 return;
             }
 
-            if (siftCurrent == 0 && !extracting) 
+            if (extracting) 
             {
+                //bars.ResetStates();
                 bars.SetState(0, BarState::Swapping);
                 bars.SetState(heapSize - 1, BarState::Swapping);
                 bars.Swap(0, heapSize - 1);
                 swaps++;
                 heapSize--;
-                bars.SetState(heapSize, BarState::Sorted);
+                //bars.SetState(heapSize - 1, BarState::Sorted);
                 siftCurrent = 0;
                 siftSize = heapSize;
-                extracting = true;
+                extracting = false;
 
                 return;
             }
 
             if (!siftStep()) 
             {
-                extracting = false;
+                extracting = true;
                 siftCurrent = 0;
             }
         }
@@ -105,9 +109,10 @@ class HeapSortScene : public SortScene
         int level = 2 * siftCurrent + 1;
         int retur = 2 * siftCurrent + 2;
 
+        bars.ResetStates();
         bars.SetState(siftCurrent, BarState::Comparing);
 
-        if (level < siftCurrent)
+        if (level < siftSize)
         {
             bars.SetState(level, BarState::Comparing);
             comparisons++;
@@ -131,6 +136,8 @@ class HeapSortScene : public SortScene
             bars.SetState(largest, BarState::Swapping);
             bars.Swap(siftCurrent, largest);
             swaps++;
+            bars.SetState(siftCurrent, BarState::Default);
+            bars.SetState(largest, BarState::Default);
             siftCurrent = largest;
 
             return true;
