@@ -36,7 +36,11 @@ class ProjectManager
             {
                 StateMachine next = menu.HandleInput();
                 if (next != StateMachine::Menu)
+                {
                     state = next;
+                    sortingManager.ResetCurrent();
+                    mazeManager.ResetCurrent();
+                }
 
                 break;
             }

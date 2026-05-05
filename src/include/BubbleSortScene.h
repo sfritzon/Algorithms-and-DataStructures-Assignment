@@ -1,5 +1,6 @@
 #pragma once
 #include "SortScene.h"
+#include <iostream>
 
 
 class BubbleSortScene : public SortScene
@@ -10,9 +11,9 @@ class BubbleSortScene : public SortScene
 
     void Reset() override
     {
+        std::cout << "RESET" << std::endl;
         SortScene::Reset();
         lastSwapped = bars.Size() - 1;
-        bars.SetState(0, BarState::Sorted);    
     }
 
 
@@ -26,7 +27,7 @@ class BubbleSortScene : public SortScene
         int n = bars.Size();
         bars.ResetStates();
 
-        for (int k = lastSwapped + 1; k < n; k++)
+        for (int k = lastSwapped; k < n; k++)
         {
             bars.SetState(k, BarState::Sorted);
         }
@@ -36,10 +37,10 @@ class BubbleSortScene : public SortScene
             for (int k = 0; k < n; k++)
             {
                 bars.SetState(k, BarState::Sorted);
+                sorted = true;
+                return;
             }
 
-            sorted = true;
-            return;
         }
 
         bars.SetState(j, BarState::Comparing);
@@ -52,13 +53,13 @@ class BubbleSortScene : public SortScene
             bars.SetState(j + 1, BarState::Swapping);
             bars.Swap(j, j + 1);
             swaps++;
-            lastSwapped = j;
         }
         
         j++;
         
         if (j >= n)
         {
+            lastSwapped--;
             i++;
             j = 0;
         }
@@ -72,5 +73,5 @@ class BubbleSortScene : public SortScene
 
     
     private:
-    int lastSwapped = 0;
+    int lastSwapped;
 };
