@@ -75,7 +75,8 @@ class ProjectManager
                 break;
 
             case StateMachine::Sorting: 
-                for (int s = 0; s < sortingManager.GetStepsPerFrame(); s++)
+            {
+                for (int s = 0; s < sortingManager.GetStepsPerFrame(); ++s) 
                     sortingManager.Update();
                 break;
 
