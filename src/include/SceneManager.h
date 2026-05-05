@@ -24,14 +24,17 @@ class SceneManager
 
     void Update() 
     {
-        if (scenes.empty()) return;
+        if (scenes.empty())
+            return;
+
         scenes[currentIndex]->Update();
     }
 
 
     void Draw(int screenW, int screenH) 
     {
-        if (scenes.empty()) return;
+        if (scenes.empty())
+            return;
 
         const int HUD_H = 60;
         const int MARGIN = 20;
@@ -39,16 +42,16 @@ class SceneManager
         const int BAR_AREA_H = screenH - BAR_AREA_Y - MARGIN;
 
         scenes[currentIndex]->Draw(MARGIN, BAR_AREA_Y, screenW - MARGIN * 2, BAR_AREA_H);
-
         scenes[currentIndex]->DrawStats(MARGIN, screenH - 110);
-
         DrawHUD(screenW);
     }
 
 
     void NextScene() 
     {
-        if (scenes.empty()) return;
+        if (scenes.empty())
+            return;
+
         currentIndex = (currentIndex + 1) % (int)scenes.size(); 
         scenes[currentIndex]->Reset();
     }
@@ -56,7 +59,8 @@ class SceneManager
 
     void ResetCurrent() 
     {
-        if (!scenes.empty()) scenes[currentIndex]->Reset();
+        if (!scenes.empty())
+            scenes[currentIndex]->Reset();
     }
 
 
@@ -88,14 +92,15 @@ class SceneManager
         DrawRectangle(0, 0, screenW, 52, { 12, 12, 20, 240 });
         DrawLine(0, 52, screenW, 52, { 60, 60, 80, 180 });
 
-        if (scenes.empty()) return;
-        SortScene* current = scenes[currentIndex];
+        if (scenes.empty())
+            return;
 
+        SortScene* current = scenes[currentIndex];
         const char* title = current->GetName().c_str();
         DrawText(title, 16, 14, 24, WHITE);
 
         int dotX = screenW / 2 - (int)scenes.size() * 18 / 2;
-        for (int k = 0; k < (int)scenes.size(); ++k)
+        for (int k = 0; k < (int)scenes.size(); k++)
         {
             Color dotCol = (k == currentIndex) ? WHITE : Color{ 80, 80, 100, 255 };
             DrawCircle(dotX + k * 20, 26, 5, dotCol);

@@ -46,7 +46,7 @@ class MouseAnimator
         if (frameTimer >= STEP_TIME) 
         {
             frameTimer = 0.0f;
-            ++pathIndex;
+            pathIndex++;
 
             if (pathIndex >= (int)path.size()) 
             {
@@ -59,7 +59,8 @@ class MouseAnimator
 
     void Draw(int x, int y, int w, int h) const 
     {
-        if (!active || path.empty()) return;
+        if (!active || path.empty())
+            return;
 
         float cw = (float)w / MazeGrid::COLS;
         float ch = (float)h / MazeGrid::ROWS;

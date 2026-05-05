@@ -33,7 +33,7 @@ class BarArray
         values.resize(count);
         states.resize(count, BarState::Default);
 
-        for (int i = 0; i < count; ++i) 
+        for (int i = 0; i < count; i++) 
         {
             values[i] = i + 1;
         }
@@ -50,8 +50,16 @@ class BarArray
     }
 
 
-    int  Size() const { return (int)values.size(); }
-    int  Get(int i) const { return values[i]; }
+    int Size() const
+    {
+        return (int)values.size();
+    }
+
+
+    int Get(int i) const
+    {
+        return values[i];
+    }
 
 
     void Swap(int i, int j) 
@@ -87,7 +95,7 @@ class BarArray
         float barW = (float)w / n;
         float maxVal = (float)n;
 
-        for (int i = 0; i < n; ++i) 
+        for (int i = 0; i < n; i++) 
         {
             float barH = ((float)values[i] / maxVal) * h;
             float bx = x + i * barW;

@@ -25,12 +25,13 @@ class MazeManager
 
     void Update(float dt) 
     {
-        if (scenes.empty()) return;
+        if (scenes.empty())
+            return;
         PathScene* cur = scenes[currentIndex];
 
         if (!cur->IsSolved() && !cur->IsFailed()) 
         {
-            for (int s = 0; s < stepsPerFrame; ++s)
+            for (int s = 0; s < stepsPerFrame; s++)
             {
                 cur->Step();
             }
@@ -46,7 +47,8 @@ class MazeManager
 
     void Draw(int screenW, int screenH) 
     {
-        if (scenes.empty()) return;
+        if (scenes.empty())
+            return;
 
         const int HUD_H = 60;
         const int MARGIN = 20;
@@ -66,7 +68,9 @@ class MazeManager
 
     void NextScene() 
     {
-        if (scenes.empty()) return;
+        if (scenes.empty())
+            return;
+
         currentIndex = (currentIndex + 1) % (int)scenes.size();
         scenes[currentIndex]->Reset();
         mouse.Reset();
@@ -75,7 +79,9 @@ class MazeManager
 
     void ResetCurrent() 
     {
-        if (!scenes.empty()) scenes[currentIndex]->Reset();
+        if (!scenes.empty())
+            scenes[currentIndex]->Reset();
+
         mouse.Reset();
     }
 
@@ -107,7 +113,9 @@ private:
     {
         DrawRectangle(0, 0, screenW, 52, { 12, 12, 20, 240 });
         DrawLine(0, 52, screenW, 52, { 60, 60, 80, 180 });
-        if (scenes.empty()) return;
+
+        if (scenes.empty())
+            return;
 
         PathScene* cur = scenes[currentIndex];
 
@@ -117,7 +125,7 @@ private:
         // Scene dots
         int dotX = screenW / 2 - (int)scenes.size() * 18 / 2;
 
-        for (int k = 0; k < (int)scenes.size(); ++k) 
+        for (int k = 0; k < (int)scenes.size(); k++) 
         {
             Color dc = (k == currentIndex) ? WHITE : Color{ 80,80,100,255 };
             DrawCircle(dotX + k*20, 26, 5, dc);

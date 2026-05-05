@@ -23,17 +23,16 @@ class BubbleSortScene : public SortScene
         }
 
         int n = bars.Size();
-
         bars.ResetStates();
 
-        for (int k = lastSwapped + 1; k < n; ++k)
+        for (int k = lastSwapped + 1; k < n; k++)
         {
             bars.SetState(k, BarState::Sorted);
         }
 
         if (i >= n -1)
         {
-            for (int k = 0; k < n; ++k)
+            for (int k = 0; k < n; k++)
             {
                 bars.SetState(k, BarState::Sorted);
             }
@@ -44,22 +43,22 @@ class BubbleSortScene : public SortScene
 
         bars.SetState(j, BarState::Comparing);
         bars.SetState(j + 1, BarState::Comparing);
-        ++comparisons;
+        comparisons++;
 
         if (bars.Get(j) > bars.Get(j + 1))
         {
             bars.SetState(j, BarState::Swapping);
             bars.SetState(j + 1, BarState::Swapping);
             bars.Swap(j, j + 1);
-            ++swaps;
+            swaps++;
             lastSwapped = j;
         }
 
-        ++j;
+        j++;
         if (j >= lastSwapped)
         {
             j = 0;
-            ++i;
+            i++;
         }
     }
 
